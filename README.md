@@ -6,6 +6,20 @@ Deluge is a BitTorrent client written in Python. Deluge is cross-platform, using
 
 # Run
 
+```yaml
+version: '3'
+services:
+    deluge:
+      image: strm/deluge
+      volumes:
+        - "/data/tmp/music-test/blackhole:/autoadd"
+        - "/data/tmp/music-test/deluge:/config"
+        - "/data/tmp/music-test/downloads:/downloads"
+      ports:
+        - "8888:8112"
+        - "58846:58846"
+```
+
 # FAQ
 
 ### Volumes
