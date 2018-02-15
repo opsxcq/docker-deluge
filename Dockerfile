@@ -19,12 +19,8 @@ USER deluge
 EXPOSE 8112
 EXPOSE 58846
 
-COPY password-changer.py /
-
 VOLUME /downloads
 VOLUME /incomplete
-
-
 
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
