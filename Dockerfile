@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-  RUN useradd --system --uid 666 -M --shell /usr/sbin/nologin deluge && \e
+  RUN useradd --system --uid 666 -M --shell /usr/sbin/nologin deluge && \
     mkdir /config /downloads /incomplete /autoadd && \
     chown deluge:deluge /config /downloads /incomplete /autoadd
 
