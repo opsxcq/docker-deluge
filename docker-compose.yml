@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+    deluge:
+      image: strm/deluge
+      volumes:
+        - "/data/tmp/music-test/blackhole:/autoadd"
+        - "/data/tmp/music-test/deluge:/config"
+        - "/data/tmp/music-test/downloads:/downloads"
+      ports:
+        - "8888:8112"
+        - "58846:58846"
+      environment:
+        - DELUGE_PASSWORD=secret
+        - DELUGE_USERNAME=torrent
+    jackett:
+      image: linuxserver/jackett
+      volumes:
+        - "/data/tmp/music-test/jackett:/config"
+        - "/data/tmp/music-test/blackhole:/blackhole"
+      environment:
+        - PGID=666
+        - PUID=666
+      ports:
+        - 9117:9117
+    headphones:
+      image: linuxserver/headphones
+      volumes:
+        - "/data/tmp/music-test/headphone/config:/config"
+        - "/data/tmp/music-test/headphone/cache:/cache"
+        - "/data/tmp/music-test/headphone/logs:/logs"
+        - "/data/tmp/music-test/downloads:/downloads"
+        - "/data/tmp/music-test/music:/music"
+      environment:
+        - PGID=666
+        - PUID=666
+      ports:
+        - 8181:8181
+      environment:
+        - PGID=666
+        - PUID=666
