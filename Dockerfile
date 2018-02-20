@@ -19,7 +19,9 @@ USER deluge
 EXPOSE 8112
 EXPOSE 58846
 
+VOLUME /config
 VOLUME /downloads
+VOLUME /autoadd
 VOLUME /incomplete
 
 COPY main.sh /

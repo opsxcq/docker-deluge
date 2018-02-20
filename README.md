@@ -8,16 +8,23 @@ Deluge is a BitTorrent client written in Python. Deluge is cross-platform, using
 
 ```yaml
 version: '3'
+
 services:
     deluge:
       image: strm/deluge
       volumes:
-        - "/data/tmp/music-test/blackhole:/autoadd"
-        - "/data/tmp/music-test/deluge:/config"
-        - "/data/tmp/music-test/downloads:/downloads"
+        - "/data/torrent-files/:/dot-torrent"
+        - "/data/torrent-input/:/autoadd"
+        - "/data/torrent:/downloads"
+        - "deluge-incomplete:/incomplete"
+        - "deluge-config:/config"
       ports:
         - "8888:8112"
         - "58846:58846"
+
+volumes:
+  deluge-incomplete:
+  deluge-config:
 ```
 
 # FAQ
@@ -25,8 +32,10 @@ services:
 ### Volumes
 
  * `/autoadd` - Any `.torrent` files added here will be added to deluge.
+ * `/dot-torrent` - `.torrent` files that you've downloaded.
  * `/config` - Your configuration files.
  * `/downloads` - Where torrents will be stored.
+ * `/config` - Where configuration and torrent metadata will be stored.
 
 ### Ports
 
@@ -35,4 +44,5 @@ services:
 
 ### Default credentials
 
-The default password is `deluge` but better change it.
+If you let deluge set the cretentials, the default password is `deluge` but
+better change it. The default password in the config file is `secret`.
