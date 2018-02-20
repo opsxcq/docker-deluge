@@ -5,6 +5,7 @@ LABEL maintainer "opsxcq@strm.sh"
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     deluge-common deluged deluge-web deluge-console \
+    wget curl \
     unzip unrar-free p7zip \
     && \
     apt-get clean && \
